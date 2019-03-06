@@ -63,6 +63,9 @@ class ViewController: UIViewController {
         subscriptionTermsText.right(to: view)
         subscriptionTermsText.height(200)
         
+        
+        
+        //Get your Subscription Terms
         IAPHelper.getSubscriptionTerms(with: IAPHelper.Product1, completed: {()->() in
             self.subscriptionTermsText.text = IAPHelper.subscriptionTerms
         })
@@ -72,6 +75,8 @@ class ViewController: UIViewController {
     }
     
     @objc func buyButtonTapped() {
+        
+        //Purchase a Product
         IAPHelper.purchaseProduct(with: IAPHelper.Product1, sharedSecret: IAPHelper.sharedSecret, type: .simple)
     }
     

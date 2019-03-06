@@ -13,7 +13,7 @@ import StoreKit
 struct IAPHelper {
     typealias Finished = () -> ()
     // Your sharedSecrets
-    static let sharedSecret = "your shared Secret"
+    static let sharedSecret = "yourSharedSecret"
     
     // List your products / Example Products
     static let Product1 = "hint4"
@@ -90,6 +90,7 @@ struct IAPHelper {
     }
     
     static func purchaseProduct(with id: String, sharedSecret: String, type: PurchaseType, validDuration: TimeInterval? = nil){
+        Spinner.start()
         if type == .simple {
             SwiftyStoreKit.retrieveProductsInfo([id]) { result in
                 if let product = result.retrievedProducts.first {
@@ -101,6 +102,7 @@ struct IAPHelper {
                                 SwiftyStoreKit.finishTransaction(product.transaction)
                             }
                             print("Purchase Success: \(product.productId)")
+                            Spinner.stop()
                         case .error(let error):
                             switch error.code {
                             case .unknown: print("Unknown error. Please contact support")
@@ -114,6 +116,7 @@ struct IAPHelper {
                             case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
                             default: print((error as NSError).localizedDescription)
                             }
+                            Spinner.stop()
                         }
                     }
                 }
@@ -122,6 +125,7 @@ struct IAPHelper {
             SwiftyStoreKit.purchaseProduct(id, atomically: true) { result in
                 
                 if case .success(let purchase) = result {
+                    Spinner.stop()
                     // Deliver content from server, then:
                     if purchase.needsFinishTransaction {
                         SwiftyStoreKit.finishTransaction(purchase.transaction)
@@ -130,6 +134,7 @@ struct IAPHelper {
                     self.verifyPurchase(with: id, sharedSecret: sharedSecret, type: type,validDuration: validDuration)
                     
                 } else {
+                    Spinner.stop()
                     // purchase error
                 }
             }
@@ -137,16 +142,21 @@ struct IAPHelper {
         
     }
     static func restorePurchases(){
+        Spinner.start()
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             if results.restoreFailedPurchases.count > 0 {
                 print("Restore Failed: \(results.restoreFailedPurchases)")
+                
             }
             else if results.restoredPurchases.count > 0 {
                 print("Restore Success: \(results.restoredPurchases)")
+                
             }
             else {
                 print("Nothing to Restore")
+               
             }
+            Spinner.stop()
         }
     }
     
@@ -176,19 +186,22 @@ struct IAPHelper {
     static var Info = [Objects]()
     
     static func getProductInfo(with id: String, completed: @escaping Finished)  {
-        
+        Spinner.start()
         SwiftyStoreKit.retrieveProductsInfo([id]) { result in
             if let product = result.retrievedProducts.first {
                 let priceString = product.localizedPrice!
                 print("Product: \(product.localizedDescription), price: \(priceString)")
                 Info.append(Objects(name: product.localizedTitle, priceString: product.localizedPrice, localizedDescription: product.localizedDescription))
+                
             }
             else if let invalidProductId = result.invalidProductIDs.first {
                 print("Invalid product identifier: \(invalidProductId)")
+                
             }
             else {
                 print("Error: \(result.error)")
             }
+            Spinner.stop()
             completed()
         }
     }
