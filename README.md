@@ -1,6 +1,6 @@
 # SwiftyStoreKit Helper (IAPHelper)
-
-IAPHelper makes SwiftyStorekit even lighter. Nothing but sugar.
+<a href="https://ibb.co/FXbNZj1"><img src="https://i.ibb.co/RNpZrVK/Swifty-Store-Kit-Helper.png" alt="Swifty-Store-Kit-Helper" border="0"></a><br />
+IAPHelper makes SwiftyStoreKit even lighter. Nothing but sugar.
 
 ## Prerequisites
 
@@ -8,8 +8,11 @@ IAPHelper makes SwiftyStorekit even lighter. Nothing but sugar.
 2. StoreKit
 3. iOS 5 or later
 
-##### Add the IAPHelper folder to your project.
-You can install SwiftyStoreKit as a CocoaPod. https://github.com/bizz84/SwiftyStoreKit
+### Add the "SwiftyStoreKitHelper" folder to your project.
+
+### Important!
+
+Install SwiftyStoreKit as a CocoaPod. https://github.com/bizz84/SwiftyStoreKit
 
 ```
 pod 'SwiftyStoreKit'
@@ -20,6 +23,33 @@ static let proSubscription = "ProductId"
 ```
 ```
 static let sharedSecret = "yourSharedSecret"
+```
+### Let's get started: 
+
+Insert ```IAPHelper.startHelper()``` in your didFinishLaunchingWithOptions.
+```
+     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:    [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        IAPHelper.startHelper()
+        
+        return true
+    }
+```
+## Get Product Informations
+```
+        IAPHelper.getProductInfo(with: IAPHelper.Product1, completed: {() -> () in
+            self.priceTag.text = IAPHelper.Info[0].priceString
+            self.productName.text = IAPHelper.Info[0].name
+            self.productDescription.text = IAPHelper.Info[0].localizedDescription
+        })
+```
+
+## Get Subscription Terms
+For auto-renewable Subscriptions.
+```
+        IAPHelper.getSubscriptionTerms(with: IAPHelper.Product1, completed: {()->() in
+            self.subscriptionTermsText.text = IAPHelper.subscriptionTerms
+        })
 ```
 
 ## Verify Purchase
