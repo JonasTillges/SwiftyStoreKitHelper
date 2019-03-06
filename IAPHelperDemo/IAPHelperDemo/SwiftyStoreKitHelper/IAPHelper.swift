@@ -146,16 +146,17 @@ struct IAPHelper {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             if results.restoreFailedPurchases.count > 0 {
                 print("Restore Failed: \(results.restoreFailedPurchases)")
-                Spinner.stop()
+                
             }
             else if results.restoredPurchases.count > 0 {
                 print("Restore Success: \(results.restoredPurchases)")
-                Spinner.stop()
+                
             }
             else {
                 print("Nothing to Restore")
-                Spinner.stop()
+               
             }
+            Spinner.stop()
         }
     }
     
