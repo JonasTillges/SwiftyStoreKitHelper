@@ -13,7 +13,6 @@ class Spinner {
     
     
     //UI Indicator
-    
     internal static var spinner: UIActivityIndicatorView?
     open static var style: UIActivityIndicatorView.Style = .whiteLarge
     open static var baseBackColor = UIColor(white: 0, alpha: 0.6)

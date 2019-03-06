@@ -74,3 +74,22 @@ IAPHelper.purchaseProduct(with: IAPHelper.proSubscription, sharedSecret: IAPHelp
 ```
 IAPHelper.restorePurchases()
 ```
+
+
+## additionally
+
+### loading indicator
+If you want you can use my loading indicator I have used in the demo project.
+Just use the IAPHelper.swift from the demo.
+
+If you want to do it yourself:
+
+Start the animation:
+```
+Spinner.start()
+```
+
+Stop the animation:
+```
+Spinner.stop()
+```
