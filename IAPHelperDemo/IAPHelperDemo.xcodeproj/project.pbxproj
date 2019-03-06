@@ -14,6 +14,7 @@
 		DD32CF7622303A0500069D7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD32CF7422303A0500069D7C /* LaunchScreen.storyboard */; };
 		DD32CF8022303B6300069D7C /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD32CF7E22303B6300069D7C /* IAPHelper.swift */; };
 		DD32CF8122303B6300069D7C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DD32CF7F22303B6300069D7C /* README.md */; };
+		DD32CF85223061C500069D7C /* spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD32CF84223061C500069D7C /* spinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		DD32CF7722303A0500069D7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD32CF7E22303B6300069D7C /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		DD32CF7F22303B6300069D7C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DD32CF84223061C500069D7C /* spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spinner.swift; sourceTree = "<group>"; };
 		E544550F0FEA5C116ACA548F /* Pods_IAPHelperDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IAPHelperDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 				DD32CF7222303A0500069D7C /* Assets.xcassets */,
 				DD32CF7422303A0500069D7C /* LaunchScreen.storyboard */,
 				DD32CF7722303A0500069D7C /* Info.plist */,
+				DD32CF84223061C500069D7C /* spinner.swift */,
 			);
 			path = IAPHelperDemo;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				DD32CF6E22303A0400069D7C /* ViewController.swift in Sources */,
 				DD32CF8022303B6300069D7C /* IAPHelper.swift in Sources */,
 				DD32CF6C22303A0400069D7C /* AppDelegate.swift in Sources */,
+				DD32CF85223061C500069D7C /* spinner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +370,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jonas.IAPHelperDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.physics.BallvsBall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -385,7 +389,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jonas.IAPHelperDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.physics.BallvsBall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
