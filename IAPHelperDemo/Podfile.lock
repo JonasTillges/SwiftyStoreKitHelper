@@ -1,0 +1,20 @@
+PODS:
+  - SwiftyStoreKit (0.14.2)
+  - TinyConstraints (3.3.1)
+
+DEPENDENCIES:
+  - SwiftyStoreKit
+  - TinyConstraints
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftyStoreKit
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  SwiftyStoreKit: cc399645796b094022fb650c148a0aed25995873
+  TinyConstraints: dbf7519aefc01ea59d62244300c7718aec68e280
+
+PODFILE CHECKSUM: b4c0e55198386b417da61448b43d630186d03400
+
+COCOAPODS: 1.5.2
