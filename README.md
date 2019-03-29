@@ -4,7 +4,8 @@ IAPHelper makes SwiftyStoreKit even lighter.
 
 # NEWS
 SwiftyStoreKitHelper now supports auto-renewable Subscribtions. You can easily implement the needed Terms or product information of your IAP product. 
-Terms:
+
+### Terms Sample:
 ```
 Subscription price: 9,99$ Description: Premium to use all features. Free Trial: 1 Week. Subscription duration: 1 Month Please read below about the auto-renewing subscription nature of this product: 
 
