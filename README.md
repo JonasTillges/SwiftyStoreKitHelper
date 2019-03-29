@@ -1,5 +1,5 @@
 # SwiftyStoreKit Helper (IAPHelper)
-<a href="https://ibb.co/FXbNZj1"><img src="https://i.ibb.co/RNpZrVK/Swifty-Store-Kit-Helper.png" alt="Swifty-Store-Kit-Helper" border="0"></a><br />
+<img src="https://i.ibb.co/RNpZrVK/Swifty-Store-Kit-Helper.png" width="1000">
 IAPHelper makes SwiftyStoreKit even lighter. 
 
 # NEWS
