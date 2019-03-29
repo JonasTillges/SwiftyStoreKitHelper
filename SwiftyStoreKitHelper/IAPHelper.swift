@@ -18,6 +18,7 @@ struct IAPHelper {
     // List your products / Example Products
     static let Product1 = "hint4"
     static var removeAds = "remove1"
+    static var premium = "premium"
     
     //just for subscriptions
     static let termsOfServiceURL = "your - URL"
@@ -198,9 +199,23 @@ struct IAPHelper {
         SwiftyStoreKit.retrieveProductsInfo([id]) { result in
             if let product = result.retrievedProducts.first {
                 let priceString = product.localizedPrice!
-                print("Product: \(product.localizedDescription), price: \(priceString)")
-                Info.append(Objects(name: product.localizedTitle, priceString: product.localizedPrice, localizedDescription: product.localizedDescription))
-                subscriptionTerms = "Subscription price: \(Info[0].priceString ?? "--,-") Description: \(Info[0].localizedDescription ?? "") \n\nPlease read below about the auto-renewing subscription nature of this product: \n\n• Payment will be charged to iTunes Account at confirmation of purchase \n• Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period \n• Account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal \n• Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase \n• Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable \n\nTerms of Use: \(termsOfServiceURL) \nPrivacy Policy: \(privacyPolicyURL)"
+                
+                if #available(iOS 11.2, *) {
+                    if let trailperiod = product.introductoryPrice?.subscriptionPeriod {
+                        if let period = product.introductoryPrice?.subscriptionPeriod{
+                            print("Start your \(period.numberOfUnits) \(unitName(unitRawValue: period.unit.rawValue)) free trial")
+                            let periodString = "\(period.numberOfUnits) \(unitName(unitRawValue: period.unit.rawValue))."
+                            let trailString = " \(trailperiod.numberOfUnits) \(unitName(unitRawValue: trailperiod.unit.rawValue)) free trial. "
+                            
+                            
+                            
+                            print("Product: \(product.localizedDescription), price: \(priceString)")
+                            Info.append(Objects(name: product.localizedTitle, priceString: product.localizedPrice, localizedDescription: product.localizedDescription))
+                            subscriptionTerms = "Subscription price: \(Info[0].priceString ?? "--,-") Description: \(Info[0].localizedDescription ?? ""). Free Trial: \(trailString) Subscription duration: \(periodString) \n\nPlease read below about the auto-renewing subscription nature of this product: \n\n• Payment will be charged to iTunes Account at confirmation of purchase \n• Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period \n• Account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal \n• Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase \n• Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable \n\nTerms of Use: \(termsOfServiceURL) \nPrivacy Policy: \(privacyPolicyURL)"
+                        }
+                    }
+                } else {
+                }
             }
             else if let invalidProductId = result.invalidProductIDs.first {
                 print("Invalid product identifier: \(invalidProductId)")
@@ -211,6 +226,15 @@ struct IAPHelper {
             completed()
         }
         
+    }
+    static func unitName(unitRawValue:UInt) -> String {
+        switch unitRawValue {
+        case 0: return "days"
+        case 1: return "Week"
+        case 2: return "months"
+        case 3: return "years"
+        default: return ""
+        }
     }
 }
 

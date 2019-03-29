@@ -14,15 +14,15 @@ class Spinner {
     
     //UI Indicator
     internal static var spinner: UIActivityIndicatorView?
-    open static var style: UIActivityIndicatorView.Style = .whiteLarge
-    open static var baseBackColor = UIColor(white: 0, alpha: 0.6)
-    open static var baseColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.0)
+    public static var style: UIActivityIndicatorView.Style = .whiteLarge
+    public static var baseBackColor = UIColor(white: 0, alpha: 0.6)
+    public static var baseColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.0)
     
     
     
     //UI Indicator
     // start spinning
-    open static func start(style: UIActivityIndicatorView.Style = style, backColor: UIColor = baseBackColor, baseColor: UIColor = baseColor) {
+    public static func start(style: UIActivityIndicatorView.Style = style, backColor: UIColor = baseBackColor, baseColor: UIColor = baseColor) {
         if spinner == nil, let window = UIApplication.shared.keyWindow {
             let frame = UIScreen.main.bounds
             spinner = UIActivityIndicatorView(frame: frame)
@@ -36,7 +36,7 @@ class Spinner {
     }
     
     //Stop spinning
-    open static func stop() {
+    public static func stop() {
         if spinner != nil {
             spinner!.stopAnimating()
             spinner!.removeFromSuperview()
@@ -44,7 +44,7 @@ class Spinner {
         }
     }
     //update
-    open static func update() {
+    public static func update() {
         if spinner != nil {
             stop()
             start()

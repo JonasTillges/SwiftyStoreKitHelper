@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         setupViews()
         
         //Get your Product Info
-        IAPHelper.getProductInfo(with: IAPHelper.Product1, completed: {() -> () in
+        IAPHelper.getProductInfo(with: IAPHelper.premium, completed: {() -> () in
             self.priceTag.text = IAPHelper.Info[0].priceString
             self.productName.text = IAPHelper.Info[0].name
             self.productDescription.text = IAPHelper.Info[0].localizedDescription
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         
         
         //Get your Subscription Terms
-        IAPHelper.getSubscriptionTerms(with: IAPHelper.Product1, completed: {()->() in
+        IAPHelper.getSubscriptionTerms(with: IAPHelper.premium, completed: {()->() in
             self.subscriptionTermsText.text = IAPHelper.subscriptionTerms
         })
         
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     @objc func buyButtonTapped() {
         
         //Purchase a Product
-        IAPHelper.purchaseProduct(with: IAPHelper.Product1, sharedSecret: IAPHelper.sharedSecret, type: .simple)
+        IAPHelper.purchaseProduct(with: IAPHelper.premium, sharedSecret: IAPHelper.sharedSecret, type: .simple)
     }
     
 }
