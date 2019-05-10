@@ -7,7 +7,7 @@ IAPHelper makes SwiftyStoreKit even lighter. And you get more features!
 
 
 # NEWS
-SwiftyStoreKitHelper now supports auto-renewable Subscribtions. You can easily implement the needed Terms or product information of your IAP product. 
+SwiftyStoreKitHelper now supports auto-renewable Subscribtions. You can easily implement the needed Terms or product information of your IAP product. totally auto-generated
 
 ### Terms Sample:
 ```
